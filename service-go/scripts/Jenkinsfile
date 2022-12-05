@@ -7,7 +7,7 @@ pipeline {
       steps {
         echo 'build starting'
         sh 'go version'
-        sh 'go build main.go'
+        sh 'go build service-go/cmd/main.go'
       }
     }
     stage('Run') {
