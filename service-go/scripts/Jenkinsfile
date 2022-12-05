@@ -1,11 +1,12 @@
 pipeline {
   agent any
-  tools {go '1.17.6' }
+  tools { go '1.17.6' }
 
   stages {
     stage('build') {
       steps {
         sh 'echo "build starting"'
+        sh 'go version'
         dir('service-go/cmd') {
             sh 'go run main.go'
         }
