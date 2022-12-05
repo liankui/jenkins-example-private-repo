@@ -10,7 +10,7 @@ pipeline {
         sh 'go version'
         dir('service-go/cmd') {
             sh 'go version'
-            sh 'xbuild.sh'
+            sh './xbuild.sh'
         }
         echo 'build done'
       }
