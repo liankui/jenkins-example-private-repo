@@ -1,6 +1,5 @@
 pipeline {
   agent any
-
   tools { go '1.17.6' }
 
   stages {
@@ -10,12 +9,8 @@ pipeline {
         sh 'go version'
         dir('service-go/cmd') {
             sh 'go version'
-            sh './xbuild.sh'
+            sh 'env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o /opt/abfuzz'
             echo 'build done'
-
-        }
-        fileOperations {
-            folderCopyOperation("service-go/cmd/cmd", "/opt/abfuzz")
         }
         echo 'build all done'
       }
