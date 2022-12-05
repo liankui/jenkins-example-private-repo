@@ -1,9 +1,14 @@
 pipeline {
   agent any
   stages {
-    stage('hello') {
+    stage('build') {
       steps {
-        sh 'echo "Hello World"'
+        sh 'echo "build starting"'
+        sh 'cd ../cmd'
+        sh 'go run main.go'
+      }
+      steps {
+        echo 'done'
       }
     }
   }
