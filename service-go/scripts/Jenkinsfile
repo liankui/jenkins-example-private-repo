@@ -12,7 +12,7 @@ pipeline {
     }
     stage('Run') {
       steps {
-        sh "nohup ./main 2&>1 &"
+        sh 'nohup ./main 2>&1 &'
         echo 'done'
       }
     }
