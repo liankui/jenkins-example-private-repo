@@ -12,7 +12,7 @@ pipeline {
             // some block
         }
         sh 'go version'
-        sh 'cmd/xbuild.sh'
+        sh "/cmd/xbuild.sh"
         echo 'build done'
       }
     }
