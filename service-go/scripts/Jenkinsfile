@@ -4,7 +4,9 @@ pipeline {
     stage('build') {
       steps {
         sh 'echo "build starting"'
-        sh 'cd ../cmd'
+        dir('../cmd') {
+            // some block
+        }
         sh 'go run main.go'
       }
     }
