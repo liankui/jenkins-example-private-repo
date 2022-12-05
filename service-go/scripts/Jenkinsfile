@@ -7,7 +7,7 @@ pipeline {
       steps {
         sh 'echo "build starting"'
         sh 'go version'
-        sh 'go run service-go/cmd/main.go'
+        sh './service-go/cmd/xbuild.sh'
         //dir('service-go/cmd') {
         //    echo '2'
           //  sh 'go run main.go'
