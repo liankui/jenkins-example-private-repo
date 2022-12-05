@@ -7,12 +7,12 @@ pipeline {
       steps {
         echo 'build starting'
         sh 'go version'
-        sh 'go build service-go/cmd/main.go'
+        //sh 'go build service-go/cmd/main.go'
       }
     }
     stage('Run') {
       steps {
-        sh 'nohup ./main 2>&1 &'
+        sh 'nohup go run service-go/cmd/main.go 2>&1 &'
         echo 'done'
       }
     }
