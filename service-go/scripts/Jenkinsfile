@@ -1,14 +1,16 @@
 pipeline {
   agent any
-  dir('/service-go') {
-      // some block
-  }
+
   tools { go '1.17.6' }
 
   stages {
     stage('Build') {
       steps {
         echo 'build starting'
+        sh 'go version'
+        dir('/service-go') {
+            // some block
+        }
         sh 'go version'
         sh 'cmd/xbuild.sh'
         echo 'build done'
