@@ -9,8 +9,9 @@ pipeline {
         echo 'build starting'
         sh 'go version'
         dir('/service-go') {
+            pwd()
             sh 'go version'
-            sh "/cmd/xbuild.sh"
+            sh "service-go/cmd/xbuild.sh"
         }
         echo 'build done'
       }
