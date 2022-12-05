@@ -1,13 +1,14 @@
 pipeline {
   agent any
+  tools {go '1.17,6'}
+
   stages {
     stage('build') {
       steps {
         sh 'echo "build starting"'
-        dir('../cmd') {
-            // some block
+        dir('service-go/cmd') {
+            sh 'go run main.go'
         }
-        sh 'go run main.go'
       }
     }
     stage('execute') {
