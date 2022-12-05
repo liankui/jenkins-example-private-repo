@@ -3,14 +3,16 @@ pipeline {
   tools { go '1.17.6' }
 
   stages {
-    stage('build') {
+    stage('Build') {
       steps {
         echo 'build starting'
-        sh "go version"
+        sh 'go version'
+        sh 'go build main.go'
       }
     }
-    stage('execute') {
+    stage('Run') {
       steps {
+        sh "nohup ./main.go 2&>1 &"
         echo 'done'
       }
     }
