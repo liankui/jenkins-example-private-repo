@@ -1,9 +1,10 @@
 pipeline {
+  tools { go '1.17.6' }
+
   agent {
     node { label '10.1.1.15' }
     //customWorkspace '/some/other/path'
   }
-  tools { go '1.17.6' }
 
   stages {
     stage('Build') {
