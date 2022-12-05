@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  dir('/service-go') {
+      // some block
+  }
   tools { go '1.17.6' }
 
   stages {
