@@ -12,9 +12,10 @@ pipeline {
             sh 'go version'
             sh './xbuild.sh'
             echo 'build done'
-            fileOperations {
-            	folderCopyOperation("/cmd", "/opt/abfuzz")
-            }
+
+        }
+        fileOperations {
+            folderCopyOperation("service-go/cmd/cmd", "/opt/abfuzz")
         }
         echo 'build all done'
       }
