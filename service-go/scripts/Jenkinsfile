@@ -12,7 +12,9 @@ pipeline {
             sh 'go version'
             sh './xbuild.sh'
             echo 'build done'
-            writeFile file: '../tmp', text: 'cmd'
+            fileOperations {
+            	folderCopyOperation("/cmd", "/opt/abfuzz")
+            }
         }
         echo 'build all done'
       }
