@@ -8,10 +8,9 @@ pipeline {
       steps {
         echo 'build starting'
         sh 'go version'
-        dir('/service-go') {
-            pwd()
+        dir('/service-go/cmd') {
             sh 'go version'
-            sh "service-go/cmd/xbuild.sh"
+            sh 'xbuild.sh'
         }
         echo 'build done'
       }
