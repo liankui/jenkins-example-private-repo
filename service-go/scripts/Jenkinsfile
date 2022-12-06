@@ -12,9 +12,6 @@ pipeline {
     stage('Build') {
       steps {
         echo 'build starting'
-        sh "export GOROOT=/opt/module/go"
-        sh "export PATH=$PATH:\$GOROOT/bin"
-
         sh "go version"
         dir('service-go/cmd') {
             sh "go version"
