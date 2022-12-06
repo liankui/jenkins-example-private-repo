@@ -5,11 +5,12 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        echo 'build starting'
-        sh "go version"
+        echo 'build start'
+        sh 'go version'
         dir('service-go/cmd') {
-            sh "go version"
-            sh "env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o /opt/abfuzz2"
+            sh 'go version'
+            sh 'env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build'
+            sh 'sshpass -p g3PXHCmW72uawn scp -P 60015 cmd root@103.79.25.186:/root'
             echo 'build done'
         }
         echo 'build all done'
@@ -18,7 +19,6 @@ pipeline {
 
     stage('Run') {
       steps {
-        //sh "nohup go run service-go/cmd/main.go 2>&1 &"
         echo 'done'
       }
     }
