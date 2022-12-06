@@ -6,10 +6,10 @@ pipeline {
     stage('Build') {
       steps {
         echo 'build start'
-        sh 'sudo supervisorctl stop all'
-        sh 'go version'
+        //sh 'sudo supervisorctl stop all'
+        sh 'export GOPROXY=https://goproxy.cn'
+        sh 'go env'
         dir('service-go/cmd') {
-            sh 'go version'
             sh 'sh ./xbuild.sh'
             sh 'sudo mv cmd /opt/abfuzz2/'
             echo 'build done'
@@ -18,10 +18,5 @@ pipeline {
       }
     }
 
-    stage('Run') {
-      steps {
-        echo 'done'
-      }
-    }
   }
 }
