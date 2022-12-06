@@ -1,6 +1,6 @@
 pipeline {
   //agent { label '10.1.1.15' }
-  agent any
+  agent { label 'master' }
   tools { go '1.17.6' }
 
   stages {
