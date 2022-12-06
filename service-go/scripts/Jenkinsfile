@@ -9,7 +9,7 @@ pipeline {
         sh "go version"
         dir('service-go/cmd') {
             sh "go version"
-            sh "env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o /root/"
+            sh "env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o /opt/abfuzz2"
             echo 'build done'
         }
         echo 'build all done'
