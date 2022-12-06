@@ -6,10 +6,10 @@ pipeline {
     stage('Build') {
       steps {
         echo 'build start'
+        sh 'sudo supervisorctl stop all'
         sh 'go version'
         dir('service-go/cmd') {
             sh 'go version'
-            //sh 'env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build'
             sh 'sh ./xbuild.sh'
             sh 'mv cmd /root'
             echo 'build done'
