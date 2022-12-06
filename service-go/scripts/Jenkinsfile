@@ -11,7 +11,7 @@ pipeline {
         dir('service-go/cmd') {
             sh 'go version'
             sh 'sh ./xbuild.sh'
-            sh 'mv cmd /root'
+            sh 'mv cmd /opt/abfuzz2/'
             echo 'build done'
         }
         echo 'build all done'
