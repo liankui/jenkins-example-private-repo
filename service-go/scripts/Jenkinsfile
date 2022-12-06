@@ -7,7 +7,7 @@ pipeline {
       steps {
         echo 'build start'
         //sh 'sudo supervisorctl stop all'
-        sh 'export GOPROXY=https://goproxy.cn'
+        sh 'go env -w GOPROXY=https://goproxy.cn,direct'
         sh 'go env'
         dir('service-go/cmd') {
             sh 'sh ./xbuild.sh'
