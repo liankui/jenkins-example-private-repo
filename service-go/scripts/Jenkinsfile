@@ -1,12 +1,6 @@
 pipeline {
+  agent { label '10.1.1.15' }
   tools { go '1.17.6' }
-
-  agent {
-    node {
-        label '10.1.1.15'
-        //customWorkspace '/some/other/path'
-    }
-  }
 
   stages {
     stage('Build') {
@@ -15,12 +9,13 @@ pipeline {
         sh "go version"
         dir('service-go/cmd') {
             sh "go version"
-            sh "env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o /opt/abfuzz"
+            sh "env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o /root/"
             echo 'build done'
         }
         echo 'build all done'
       }
     }
+
     stage('Run') {
       steps {
         //sh "nohup go run service-go/cmd/main.go 2>&1 &"
