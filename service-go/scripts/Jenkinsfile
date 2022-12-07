@@ -1,6 +1,6 @@
 pipeline {
   agent { label '10.1.1.15' }
-  tools { go '1.19.3' }
+  tools { go '1.18.8' }
 
   stages {
     stage('Build') {
