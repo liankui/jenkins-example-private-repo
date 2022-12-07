@@ -6,14 +6,12 @@ import (
 	"strings"
 
 	"github.com/acarl005/stripansi"
-	jsoniter "github.com/json-iterator/go"
 )
 
 func main() {
 	var lines = strings.Split(stripansi.Strip(string([]byte{124})), "\n")
 	fmt.Println(lines)
 
-	_, _ = jsoniter.Marshal([]byte{123})
 	http.HandleFunc("/hello", func(rw http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(rw, "hello world")
 	})
