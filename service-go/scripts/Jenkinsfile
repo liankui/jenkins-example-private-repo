@@ -9,6 +9,7 @@ pipeline {
         //sh 'sudo supervisorctl stop all'
         sh 'export GO111MODULE=on'
         sh 'export GOPROXY=https://goproxy.cn'
+        sh 'go mod tidy'
         sh 'go env'
         dir('service-go/cmd') {
             sh 'sh ./xbuild.sh'
