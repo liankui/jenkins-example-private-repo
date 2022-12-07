@@ -7,11 +7,11 @@ pipeline {
       steps {
         echo 'build start'
         //sh 'sudo supervisorctl stop all'
-        sh 'export GO111MODULE=on'
-        sh 'export GOPROXY=https://goproxy.cn'
-        sh 'go mod tidy'
+        sh 'go env -w GO111MODULE=on'
+        sh 'go env -w GOPROXY=https://goproxy.cn,direct'
         sh 'go env'
         dir('service-go/cmd') {
+            sh 'go mod tidy'
             sh 'sh ./xbuild.sh'
             sh 'sudo mv cmd /opt/abfuzz2/'
             echo 'build done'
