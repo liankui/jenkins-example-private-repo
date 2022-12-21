@@ -3,15 +3,9 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"strings"
-
-	"github.com/acarl005/stripansi"
 )
 
 func main() {
-	var lines = strings.Split(stripansi.Strip(string([]byte{124})), "\n")
-	fmt.Println(lines)
-
 	http.HandleFunc("/hello", func(rw http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(rw, "hello world")
 	})
