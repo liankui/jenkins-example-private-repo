@@ -4,7 +4,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'hello'
-                sh id
+                sh 'id'
             }
         }
     }
