@@ -23,7 +23,5 @@ pipeline {
                 sh 'docker push registry.cosec.tech:5000/abfuzz-javafuzz-java-linux-amd64-ubuntu-20_04-openjdk-8'
             }
         }
-        stage('Push') {
-        }
     }
 }
