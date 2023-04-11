@@ -18,8 +18,7 @@ set -ex
 for element in "${imagesSuffix[@]}"; do
   imageName=$baseImageName-$element
   docker build --build-arg IMAGE_NAME=$remotePrefix/$baseImageName --build-arg IMAGE_TAG=$element -t $remotePrefix/$imageName:latest -f $ubuntu20Dir/Dockerfile-build $ubuntu20Dir
-#  docker tag $imageName:latest $remotePrefix/$imageName:latest
-#    docker tag $remotePrefix/$imageName:latest $remotePrefix/$imageName:$version
-#    docker push $remotePrefix/$imageName:latest
-#    docker push $remotePrefix/$imageName:$version
+  docker tag $remotePrefix/$imageName:latest $remotePrefix/$imageName:$version
+  docker push $remotePrefix/$imageName:latest
+  docker push $remotePrefix/$imageName:$version
 done
