@@ -2,11 +2,13 @@ pipeline {
     agent none
     stages {
         stage('Prepare') {
+            agent any
             steps {
                 sh 'mv data-collection-agent-1.0.0.jar docker-images/abfuzz-javafuzz-java/linux-amd64-ubuntu-20_04/${data-collection-agent-1.0.0.jar}'
                 sh 'll docker-images/abfuzz-javafuzz-java/linux-amd64-ubuntu-20_04'
             }
         }
+
         stage('openjdk-8 Build') {
             agent {
                 // Equivalent to "docker build -f docker-images/abfuzz-javafuzz-java/linux-amd64-ubuntu-20_04/Dockerfile-build --build-arg IMAGE_BASE=registry.cosec.tech:5000/abfuzz-javafuzz-java-linux-amd64-ubuntu-20_04 --build-arg IMAGE_TAG=openjdk-8 ./docker-images/abfuzz-javafuzz-java/linux-amd64-ubuntu-20_04"
