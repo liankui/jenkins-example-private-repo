@@ -1,0 +1,8 @@
+ARG IMAGE_BASE="registry.cosec.tech:5000/abfuzz-javafuzz-java-linux-amd64-ubuntu-20_04"
+ARG IMAGE_TAG="jdk-8"
+FROM ${IMAGE_BASE}:${IMAGE_TAG}
+
+# add base jar
+ENV JAVA=/java
+RUN mkdir -p $JAVA && chmod a+rwx $JAVA
+COPY data-collection-agent-1.0.0.jar $JAVA/

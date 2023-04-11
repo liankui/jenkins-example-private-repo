@@ -1,0 +1,12 @@
+FROM ubuntu:20.04
+ENV DEBIAN_FRONTEND noninteractive
+ENV LANG C.UTF-8
+RUN sed -i "s@http://.*archive.ubuntu.com@http://repo.huaweicloud.com@g" /etc/apt/sources.list
+RUN sed -i "s@http://.*security.ubuntu.com@http://repo.huaweicloud.com@g" /etc/apt/sources.list
+RUN apt-get update -qq && apt-get install -y curl telnet vim iputils-ping net-tools
+
+# add tomcat
+ADD apache-tomcat-8.5.84.tar.gz /usr/local/
+RUN mv /usr/local/apache-tomcat-8.5.84 /usr/local/tomcat
+
+

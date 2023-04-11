@@ -1,0 +1,8 @@
+FROM registry.cosec.tech:5000/abfuzz-javafuzz-java-linux-amd64-ubuntu-20_04:base
+
+# jdk environment
+RUN mkdir -p /WORK
+ADD jdk-17_linux-x64_bin.tar.gz /WORK
+ENV JAVA_HOME=/WORK/jdk-17.0.5
+ENV CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+ENV PATH=$JAVA_HOME/bin:/java:$PATH

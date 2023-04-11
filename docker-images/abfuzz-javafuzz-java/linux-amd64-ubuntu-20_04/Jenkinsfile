@@ -1,0 +1,20 @@
+pipeline {
+    agent {
+        // Equivalent to "docker build -f Dockerfile-build --build-arg IMAGE_BASE=registry.cosec.tech:5000/abfuzz-javafuzz-java-linux-amd64-ubuntu-20_04 --build-arg IMAGE_TAG=openjdk-8 .
+        dockerfile {
+            filename 'Dockerfile-build'
+            label 'abfuzz-javafuzz-java-linux-amd64-ubuntu-20_04-openjdk-8'
+            additionalBuildArgs  '--build-arg IMAGE_BASE=registry.cosec.tech:5000/abfuzz-javafuzz-java-linux-amd64-ubuntu-20_04'
+            additionalBuildArgs  '--build-arg IMAGE_TAG=openjdk-8'
+        }
+    }
+    stages {
+        stage('Push') {
+            steps {
+                echo 'Push'
+                sh 'docker inspect registry.cosec.tech:5000/abfuzz-javafuzz-java-linux-amd64-ubuntu-20_04-openjdk-8 -f "{{.Id}} {{.RepoTags}}"'
+                sh 'docker push registry.cosec.tech:5000/abfuzz-javafuzz-java-linux-amd64-ubuntu-20_04-openjdk-8'
+            }
+        }
+    }
+}
