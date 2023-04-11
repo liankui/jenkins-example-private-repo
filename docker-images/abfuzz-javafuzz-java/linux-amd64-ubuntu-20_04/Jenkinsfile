@@ -4,7 +4,6 @@ pipeline {
         stage('Prepare') {
             agent any
             steps {
-                sh 'mv data-collection-agent-1.0.0.jar docker-images/abfuzz-javafuzz-java/linux-amd64-ubuntu-20_04/${data-collection-agent-1.0.0.jar}'
                 sh 'll docker-images/abfuzz-javafuzz-java/linux-amd64-ubuntu-20_04'
             }
         }
