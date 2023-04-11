@@ -3,7 +3,6 @@ pipeline {
         // Equivalent to "docker build -f Dockerfile-build --build-arg IMAGE_BASE=registry.cosec.tech:5000/abfuzz-javafuzz-java-linux-amd64-ubuntu-20_04 --build-arg IMAGE_TAG=openjdk-8 .
         dockerfile {
             filename 'Dockerfile-build'
-            label 'abfuzz-javafuzz-java-linux-amd64-ubuntu-20_04-openjdk-8'
             additionalBuildArgs  '--build-arg IMAGE_BASE=registry.cosec.tech:5000/abfuzz-javafuzz-java-linux-amd64-ubuntu-20_04'
             additionalBuildArgs  '--build-arg IMAGE_TAG=openjdk-8'
         }
