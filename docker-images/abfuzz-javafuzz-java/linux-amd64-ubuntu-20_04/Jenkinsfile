@@ -4,7 +4,9 @@ pipeline {
         stage('Prepare') {
             agent any
             steps {
-                sh 'll docker-images/abfuzz-javafuzz-java/linux-amd64-ubuntu-20_04'
+                pwd
+                echo '${data-collection-agent-1.0.0.jar}'
+                sh 'ls docker-images/abfuzz-javafuzz-java/linux-amd64-ubuntu-20_04'
             }
         }
 
